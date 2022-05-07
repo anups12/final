@@ -1,0 +1,123 @@
+{% extends 'learn/main.html' %}
+{% block body %}
+
+{% for message in messages%}
+<p>{{message}}</p>
+{% endfor %}
+
+<div class="row mx-1 my-5 ">
+    <div class="col-md-4 ">
+        <div class="card p-0 bg-primary">
+            <h2 class="text-center text-light fw-bold">Total Order</h2>
+            <hr class="w-100">
+            <div class="card-body">
+                <h4 class="text-center text-light fw-bold">{{total_order}}</h4>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4">
+        <div class="card p-0 bg-primary">
+            <h2 class="text-center"> Order Deliver</h2>
+            <hr class="w-100">
+            <div class="card-body">
+            <h2 class="text-center text-light fw-bold">{{delivered}}</h2>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-md-4">
+        <div class="card p-0 bg-primary">
+            <h2 class="text-center "> Order Pending </h2>
+            <hr class="w-100">
+            <div class="card-body">
+                <h2 class="text-center text-light fw-bold">{{pending}}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row m-2 col-sm-12">
+    <div class="col-md-5">
+        <H2>CUSTOMER</H2>
+        <hr>
+        <div class="container bg-info p-3">
+            <button class="btn btn-outline-primary w-100">Create Customer</button>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <h4>Customer</h4>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h4>Phone</h4>
+                </div>
+                <div class="col-md-4">
+                    <h4>View</h4>
+                </div>
+            </div>
+            <hr>
+            {% for c in customer %}
+            <div class="row text-center">
+                <div class="col-md-4">
+                <a class="nav-link text-light fs-3" href="{% url 'customer' c.id %}"><h4>{{c.name}}</h4></a> 
+                </div>
+                <div class="col-md-4 text-center">
+                    <h4 class=" ">{{c.phone}}</h4>
+                </div>
+                <div class="col-md-4">
+                    <a class="btn fw-bold btn-outline-dark btn-sm p-2 text-light" href="{% url 'customer' c.id %}">View</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-md-7 col-12">
+
+        <H2>LAST 5 ORDERS</H2>
+        <hr>
+        <div class="container bg-info p-3">
+            <h3 class="bg-info text-success w-100 text-center fw-bold">Orders</h3>
+            <hr>
+            <div class="row text-center">
+                <div class="col-md-2 p-0">
+                    <h4>Product</h4>
+                </div>
+                <div class="col-md-3 p-0">
+                    <h4> Date Ordered</h4>
+                </div>
+                <div class="col-md-3 p-0">
+                    <h4>Status</h4>
+                </div>
+                <div class="col-md-2 p-0">
+                    <h4>Update</h4>
+                </div>
+                <div class="col-md-2 p-0">
+                    <h4>Remove</h4>
+                </div>
+            </div>
+            {% for o in order%}
+            <div class="row text-center">
+                <div class="col-md-2">
+                    <h6>{{o.product}}</h4>
+                </div>
+                <div class="col-md-3">
+                    <h6>{{o.created}}</h6>
+                </div>
+                <div class="col-md-3">
+                    <h6>{{o.status}}</h6>
+                </div>
+                <div class="col-md-2">
+                    <a class="btn btn-outline-dark btn-block fw-bold btn-sm" href="{% url 'update_order' o.id %}">Update</a>
+                </div>
+                <div class="col-md-2">
+                    <a class="btn btn-outline-dark btn-block fw-bold btn-sm" href="{% url 'delete_order' o.id %}">Delete</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock body %}

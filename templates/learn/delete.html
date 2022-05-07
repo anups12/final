@@ -1,0 +1,16 @@
+{% extends 'learn/main.html' %}
+{% block body %}
+
+
+
+<div class="container" style="width: 60vw; height: 50vh; margin: 10% auto; background-color: chartreuse;">
+    <p class="fw-bold text-center p-2 bg-info">Are you sure you want to delete  </p>
+    <h2 class="fw-bold text-center p-2 bg-info">{{order}}</h2>
+    <form action="" method="post" style="align-items: center; text-align: center;">
+        {% csrf_token %}
+        <a class="btn btn-info p-2 fs-4 m-5 fw-bold" href="{% url 'home' %}">Cancel</a>
+        <input class="btn btn-info p-2 fs-4 m-5 fw-bold" type="submit" value="Delete" >
+    </form>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,36 @@
+{% extends 'learn/main.html' %}
+{% block body %}
+
+<div class="container my-3 bg-light">
+    <div class="container">
+        <h3>Products</h3>
+    </div><hr>
+    <div class="container">
+        <div class="row bg-secondary p-2">
+            <div class="col-md-4">
+                <h4 class="fw-bold">Product</h4>
+            </div>
+            <div class="col-md-4">
+                <h4 class="fw-bold">Category</h4>
+            </div>
+            <div class="col-md-4">
+                <h4 class="fw-bold">Price</h4>
+            </div>
+        </div>
+        {% for p in product%}
+        <div class="row bg-info">
+            <div class="col-md-4">
+                <h4>{{p.name}}</h4>
+            </div>
+            <div class="col-md-4">
+                <h4>{{p.category}}</h4>
+            </div>
+            <div class="col-md-4">
+                <h4>{{p.price}}</h4>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock body %}

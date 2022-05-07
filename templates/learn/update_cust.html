@@ -1,0 +1,12 @@
+{% extends 'learn/main.html' %}
+{% block body %}
+<div class="container my-3 p-3 " style="width: 50%; background:rgb(109, 109, 247)">
+   <form action="" method="post" enctype="multipart/form-data">
+       {% csrf_token %}
+       {{form}}
+    <input type="submit" class="btn my-4 fw-bold fs-3 btn-outline-dark w-100" value="Update">
+   </form>
+
+</div>
+
+{% endblock body %}

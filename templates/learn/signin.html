@@ -1,0 +1,24 @@
+{% extends 'learn/main.html' %}
+{% block body %}
+
+<div class="container p-5 my-2 box" style="width: 50vw; background-color: rgba(255, 192, 203, 0.468);">
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="username" class=" fw-bold fs-3 ">{{form.username.label}}</label>
+        <h6>{{form.username.errors}}</h6>
+            {{form.username}} <br>
+        <label for="email" class=" fw-bold fs-3 ">{{form.email.label}}</label>
+        <h6>{{form.email.errors}}</h6>
+        {{form.email}} <br>
+        <label for="password1" class=" fw-bold fs-3 ">{{form.password1.label}}</label>
+        <h6>{{form.password1.errors}}</h6>
+        {{form.password1}} <br>
+        <label for="password2" class=" fw-bold fs-3 ">{{form.password2.label}}</label>
+        <h6>{{form.password2.errors}}</h6>
+       {{form.password2}} <br>
+       <input class="btn btn-outline-info w-100 fw-bold my-2" type="submit" value="Submit">
+    </form>
+   <u> <h4>Already have an account <a href="{% url 'login' %}">Login</a> Here</h4></u>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,12 @@
+{% extends 'learn/main.html' %}
+{% block body %}
+
+
+<div class="container p-3" style="width: 60vw; height: 50vh; margin: 10% auto; background-color: chartreuse;">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form}} <br>
+        <input class="btn btn-outline-primary fw-bold" type="submit" value="Create" style="margin: 60px auto;">
+    </form>
+</div>
+{% endblock body %}

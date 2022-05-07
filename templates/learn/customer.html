@@ -1,0 +1,92 @@
+{% extends 'learn/main.html' %}
+{% block body %}
+
+<div class="row mx-1 my-5 ">
+    <div class="col-md-4  " >
+        <div class="card p-0 cust">
+            <h2 class="text-center fw-bold">{{customer.name}}</h2>
+            <hr class="w-100">
+            <div class="card-body">
+                <a class="btn btn-outline-success fw-bold w-100 my-2" href="">Update Customer</a>
+                <a href="{% url 'create_order' customer.id %}" class="btn btn-outline-primary fw-bold w-100">Create Order</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4">
+        <div class="card p-0 cust1">
+            <h2 class="text-center"> Contact Info </h2>
+            <hr class="w-100">
+            <div class="card-body">
+                <h4 class="my-2 ">Email :- {{customer.email}}</h4>
+                <h4 class="my-2 ">Phone :- {{customer.phone}}</h4>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-md-4">
+        <div class="card p-0 cust1">
+            <h2 class="text-center ">Total Orders :- <strong> {{customer.order_set.all.count}} </strong></h2>
+            <hr class="w-100">
+            <div class="card-body">
+                {% for x in customer.order_set.all %}
+                <h5>{{x}}</h5>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row bg-info my-3 p-2">
+    <div class="col-md-3 mx-auto ">
+        <button class="btn btn-outline-success btn-lg">Search </button>
+    </div>
+    <div class="col-md-9 my-auto">
+        {{myfilter.form}}
+    </div>
+</div>
+<div class="container-fluid bg-info p-2">
+    <div class="row p-1 ">
+        <div class="col-md-2">
+            <h5>Product</h5>
+        </div>
+        <div class="col-md-2">
+            <h5>Category</h5>
+        </div>
+        <div class="col-md-2">
+            <h5>Date Ordered</h5>
+        </div>
+        <div class="col-md-2">
+            <h5>Status</h5>
+        </div>
+        <div class="col-md-2">
+            <h5>Update</h5>
+        </div>
+        <div class="col-md-2">
+            <h5>Remove</h5>
+        </div>
+    </div>
+    {% for x in customer.order_set.all %}
+    <div class="row p-1">
+        <div class="col-md-2">
+            <h5>{{x.product}}</h5>
+        </div>
+        <div class="col-md-2">
+            <h5>{{x.product.category}}</h5>
+        </div>
+        <div class="col-md-2">
+            <h5>{{x.created}}</h5>
+        </div>
+        <div class="col-md-2">
+            <h5>{{x.status}}</h5>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-outline-dark btn-block fw-bold btn-sm" href="{% url 'update_order' x.id %}">Update</a>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-outline-dark btn-block fw-bold btn-sm" href="{% url 'delete_order' x.id %}">Delete</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock body %}

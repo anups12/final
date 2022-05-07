@@ -1,0 +1,16 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: rgba(236, 169, 169, 0.475);
+}
+.cust{
+    background: -moz-linear-gradient(rgba(225, 82, 82, 0.584),rgba(81, 81, 204, 0.434));
+}
+.cust1{
+    background: -moz-radial-gradient(rgba(228, 125, 142, 0.726),rgba(153, 92, 153, 0.498));
+}
+.box{
+    box-shadow: 2px 2px 5px 4px rgba(0, 0, 0, 0.263);
+}

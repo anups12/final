@@ -1,0 +1,75 @@
+{% extends 'learn/main.html' %}
+{% block body %}
+
+<div class="row mx-1 my-5 ">
+    <div class="col-md-4  " >
+        <div class="card p-0 cust">
+            <h2 class="text-center fw-bold">{{user.customer.name.capitalize}}</h2>
+            <hr class="w-100">
+            <div class="card-body">
+                <a class="btn btn-outline-success fw-bold w-100 my-2" href="{% url 'update_profile' %}">Update Customer</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4">
+        <div class="card p-0 cust1">
+            <h2 class="text-center"> Contact Info </h2>
+            <hr class="w-100">
+            <div class="card-body">
+                <h4 class="my-2 ">Email :- {{user.customer.email}}</h4>
+                <h4 class="my-2 ">Phone :- {{user.customer.phone}}</h4>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-md-4">
+        <div class="card p-0 cust1">
+            <h2 class="text-center ">Total Orders :- <strong> {{orders.count}} </strong></h2>
+            <hr class="w-100">
+            <div class="card-body">
+            <h2 class="text-center ">Total Delivered :- <strong> {{delivered}} </strong></h2>
+            <h2 class="text-center ">Total Pending :- <strong> {{pending}} </strong></h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid bg-info p-2">
+    <div class="row p-1 ">
+        <div class="col-md-3">
+            <h5>Product</h5>
+        </div>
+        <div class="col-md-3">
+            <h5>Category</h5>
+        </div>
+        <div class="col-md-3">
+            <h5>Date Ordered</h5>
+        </div>
+        <div class="col-md-3">
+            <h5>Status</h5>
+        </div>
+       
+    </div>
+    {% for x in orders %}
+    <div class="row p-1">
+        <div class="col-md-3">
+            <h5>{{x.product}}</h5>
+        </div>
+        <div class="col-md-3">
+            <h5>{{x.product.category}}</h5>
+        </div>
+        <div class="col-md-3">
+            <h5>{{x.created}}</h5>
+        </div>
+        <div class="col-md-3">
+            <h5>{{x.status}}</h5>
+        </div>
+       
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock body %}

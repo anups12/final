@@ -1,0 +1,20 @@
+{% extends 'learn/main.html' %}
+{% block body %}
+
+{% for message in messages%}
+<p>{{message}}</p>
+{% endfor %}
+<div class="container p-5 my-3 box" style="width: 50vw; background-color: rgba(255, 192, 203, 0.468);">
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="username" class=" fw-bold fs-3 my-2 ">Username</label>
+        <input type="text" class="form-control" name="username" placeholder="Enter Username">
+        <label for="password" class=" fw-bold fs-3 my-2 ">Password</label>
+        <input type="text" class="form-control" name="password" placeholder="Enter Password">
+       
+       <input class="btn btn-outline-info w-100 fw-bold my-2" type="submit" value="Login">
+    </form>
+   <u> <h4>Don't have an account <a href="{% url 'signin' %}"> Signin </a> Here</h4></u>
+</div>
+
+{% endblock body %}
