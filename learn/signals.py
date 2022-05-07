@@ -9,4 +9,4 @@ def Customer_profile(sender, instance, created, **kwargs):
         Customer.objects.create(user=instance, name=instance.username)
         print('profile created')
 
-post_save.connect(Customer_profile, sender=User)
+post_save.connect(Customer_profile, sender=User)    
